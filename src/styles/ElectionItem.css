@@ -1,0 +1,152 @@
+/* ElectionItem.css */
+.election-item {
+    background-color: #fff;
+    margin: 10px 0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .election-item:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .election-item h3 {
+    margin: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .election-details-actions {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .election-details {
+    padding: 10px 0;
+  }
+  
+  .election-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .election-header h3 {
+    flex-grow: 1; /* Allows the title to grow and fill space */
+    margin: 0; /* Resets margin */
+    overflow: hidden; /* Ensures text doesn't overflow */
+    white-space: nowrap; /* Prevents wrapping */
+    text-overflow: ellipsis; /* Adds an ellipsis for overflowing text */
+  }
+  
+  .election-actions {
+    flex-shrink: 0; /* Prevents buttons from shrinking */
+    display: flex;
+    gap: 10px; /* Adds space between buttons */
+  }
+  
+  .election-actions button {
+    padding: 5px 10px;
+    margin-right: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .election-actions button:hover {
+    background-color: #0056b3;
+  }
+  
+  .edit-election-form input {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.075);
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  }
+  
+  .edit-election-form input:focus {
+    border-color: #66afe9;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(102,175,233,0.6);
+  }
+  
+  .edit-election-form button {
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .edit-election-form button:hover {
+    background-color: #218838;
+  }
+  
+  /* Adjustments for smaller screens */
+  @media (max-width: 768px) {
+    .election-details-actions {
+      flex-direction: column;
+    }
+  
+    .election-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .election-actions button {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+  
+  /* Styling for the BallotForm and BallotsList components */
+  /* These are example styles and may need adjusting based on your actual component structure */
+  
+  .ballot-form {
+    background-color: #f8f9fa;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 5px;
+  }
+  
+  .ballot-list {
+    margin-top: 15px;
+  }
+  
+  .ballot-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+  }
+  
+  .ballot-item:hover {
+    background-color: #dde2e6;
+  }
+  
+  .ballot-delete-button {
+    padding: 5px 10px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    borderRadius: 5px;
+  }
+  
+  .ballot-delete-button:hover {
+    background-color: #c82333;
+  }

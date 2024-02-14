@@ -1,3 +1,45 @@
+/* App.css */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+input, select {
+  padding: 10px;
+  margin: 10px 0;
+  display: block;
+  width: 95%;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
 .App {
   text-align: center;
 }
@@ -37,11 +79,9 @@
   }
 }
 
-.app-container {
-  display: flex;
-}
-
 .content {
-  margin-left: 250px; /* Equal to the sidebar width */
+  margin-top: 60px; /* Match the navbar height */
+  margin-left: 250px; /* Match the sidebar width */
   padding: 20px;
+  /* Ensures content does not overlap with sidebar and navbar */
 }

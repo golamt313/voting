@@ -1,0 +1,34 @@
+/* BallotsList.css */
+.ballots-list {
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-left: 3px solid #007bff;
+    margin: 20px 0;
+  }
+  
+  .ballot-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .ballot-item:last-child {
+    border-bottom: none;
+  }
+  
+  /* BallotForm.css */
+  .ballot-form {
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 8px;
+    box-shadow: inset 0 0 10px #ccc;
+    margin: 20px 0;
+  }
+  
+  .ballot-form input {
+    width: calc(100% - 22px); /* Adjust based on padding */
+  }
+  
+  .ballot-form button {
+    margin-top: 10px;
+  }
+  
