@@ -1,22 +1,18 @@
+// Navbar.js
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getAuth, signOut } from "firebase/auth";
-import '../styles/Navbar.css';
+import '../styles/Navbar.css'; // Make sure the path to the CSS file is correct
 
 const Navbar = ({ currentUser }) => {
   const [logoutSuccess, setLogoutSuccess] = useState('');
-  const [fadeOut, setFadeOut] = useState(false); // State to control fade-out effect
+  const [fadeOut, setFadeOut] = useState(false);
 
   const handleSignOut = () => {
     const auth = getAuth();
     signOut(auth).then(() => {
       setLogoutSuccess('You have been logged out successfully.');
-      setFadeOut(false); // Reset fade-out for the next logout
-      
-      setTimeout(() => {
-        setFadeOut(true); // Start fade-out after 2 seconds
-        setTimeout(() => setLogoutSuccess(''), 1000); // Remove message after fade-out completes
-      }, 2000);
+      setTimeout(() => setLogoutSuccess(''), 3000); // Hide the logout success message after 3 seconds
     }).catch((error) => {
       console.error('Sign out error:', error);
     });
@@ -25,11 +21,19 @@ const Navbar = ({ currentUser }) => {
   return (
     <div className="navbar">
       <ul>
-        <li><Link to="/">Home</Link></li>
-        {!currentUser && <li><Link to="/signin">Sign In</Link></li>}
-        {!currentUser && <li><Link to="/signup">Sign Up</Link></li>}
-        {currentUser && <li style={{color: 'white'}}>{currentUser.email}</li>}
-        {currentUser && <li><button onClick={handleSignOut}>Sign Out</button></li>}
+        {/* Removed the Home link */}
+        {currentUser && (
+          <>
+            <li>{currentUser.email}</li>
+            <li><button onClick={handleSignOut}>Sign Out</button></li>
+          </>
+        )}
+        {!currentUser && (
+          <>
+            <li><Link to="/signin">Sign In</Link></li>
+            <li><Link to="/signup">Sign Up</Link></li>
+          </>
+        )}
       </ul>
       {logoutSuccess && (
         <div className={`success-message ${fadeOut ? 'fade-out' : ''}`}>

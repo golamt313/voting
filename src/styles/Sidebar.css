@@ -1,0 +1,82 @@
+/* Sidebar.css */
+
+/* Main sidebar styling */
+.sidebar {
+    background-color: #333;
+    color: white;
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    z-index: 1000; /* Ensure it's above other content */
+  }
+  
+  /* Style for all list items */
+  .sidebar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Style for top-level list items */
+  .sidebar ul li {
+    padding: 10px;
+    cursor: pointer; /* Indicates the item is clickable */
+  }
+  
+  /* Style for top-level list items that are clickable (for accordion) */
+  .sidebar ul li > button {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    font-size: 17px;
+  }
+  
+  /* Hover effect for top-level items */
+  .sidebar ul li > button:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  /* Style for sub-menu items */
+  .sidebar ul li ul {
+    display: none; /* Hidden by default */
+    background-color: #444; /* Slightly different background for sub-menu */
+  }
+  
+  /* Style for sub-menu items when the parent is active */
+  .sidebar ul li.active ul {
+    display: block; /* Show sub-menu */
+  }
+  
+  /* Style for links */
+  .sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    color: white;
+    display: block;
+  }
+  
+  /* Hover effect for links */
+  .sidebar a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  /* Add padding to sub-menu items for indentation */
+  .sidebar ul li ul li a {
+    padding-left: 35px;
+  }
+  
+  /* Optional: style for the active navigation item */
+  .sidebar a.active {
+    background-color: #ffa500;
+    color: white;
+  }
+  
