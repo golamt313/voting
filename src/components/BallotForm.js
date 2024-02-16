@@ -1,41 +1,40 @@
-// BallotForm.js
-
 import React, { useState } from 'react';
-import { getFirestore, collection, addDoc } from 'firebase/firestore';
-import '../styles/Ballot.css';
+import { useNavigate } from 'react-router-dom';
+import { getFirestore, addDoc, collection } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth'; // Import getAuth to access the auth state
 
 const BallotForm = ({ electionId }) => {
   const [ballotName, setBallotName] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
+  const navigate = useNavigate();
   const db = getFirestore();
+  const auth = getAuth(); // Initialize auth
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await addDoc(collection(db, "elections", electionId, "ballots"), {
-        name: ballotName,
-      });
-      setBallotName(''); // Clear the form after successful submission
-      setSuccessMessage('Ballot added successfully');
-      setTimeout(() => setSuccessMessage(''), 3000); // Clear success message after 3 seconds
-    } catch (error) {
-      console.error("Error adding ballot: ", error);
-      // Optionally, set an error message in a similar manner
+  const handleAddBallot = async () => {
+    const user = auth.currentUser; // Get the currently logged-in user
+    if (!user) {
+      console.error('No authenticated user found');
+      return;
     }
+
+    const ballotData = {
+      name: ballotName,
+      creatorId: user.uid, // Add the creatorId field with the UID of the current user
+      electionId: electionId, // Store electionId with the ballot
+      // Add any additional properties here
+    };
+    const docRef = await addDoc(collection(db, `elections/${electionId}/ballots`), ballotData);
+    navigate(`/election/${electionId}/ballot/${docRef.id}/edit`);
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={ballotName}
-          onChange={(e) => setBallotName(e.target.value)}
-          placeholder="Ballot Name"
-        />
-        <button type="submit">Add Ballot</button>
-      </form>
-      {successMessage && <p>{successMessage}</p>}
+      <input
+        type="text"
+        value={ballotName}
+        onChange={(e) => setBallotName(e.target.value)}
+        placeholder="Enter ballot name"
+      />
+      <button onClick={handleAddBallot}>Add Ballot</button>
     </div>
   );
 };

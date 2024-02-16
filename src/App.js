@@ -12,6 +12,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import './App.css';
 import './styles/Sidebar.css';
 import ElectionSettings from './components/ElectionSettings';
+import BallotEditPage from './components/BallotEditPage';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -55,6 +56,7 @@ function App() {
             {(isSuperAdmin || isAdmin) && <Route path="/usermanagement" element={<UserManagement />} />}
             {(isSuperAdmin || isAdmin) && <Route path="/electionmanagement" element={<ElectionManagement />} />}
             {(isSuperAdmin || isAdmin) && <Route path="/electionsettings" element={<ElectionSettings />} />}
+            {(isSuperAdmin || isAdmin) && <Route path="/election/:electionId/ballot/:ballotId/edit" element={<BallotEditPage />} />}
             {/* Redirect unauthorized access */}
             <Route path="/electionsettings" element={<Navigate to="/" />} />
             <Route path="/electionmanagement" element={<Navigate to="/" />} />
