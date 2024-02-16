@@ -34,7 +34,7 @@ const BallotEditPage = () => {
       }
   
       const ballotData = ballotSnapshot.data();
-      const isCreator = ballotData.creatorId === user.uid;
+      const isCreator = ballotData.adminId === user.uid;
       const idTokenResult = await user.getIdTokenResult();
       const isSuperAdmin = !!idTokenResult.claims.superadmin;
   

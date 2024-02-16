@@ -18,10 +18,12 @@ const BallotForm = ({ electionId }) => {
 
     const ballotData = {
       name: ballotName,
-      creatorId: user.uid, // Add the creatorId field with the UID of the current user
+      adminId: user.uid, // Add the adminId field with the UID of the current user
       electionId: electionId, // Store electionId with the ballot
       // Add any additional properties here
     };
+    console.log(`Adding ballot with name: ${ballotName}, electionId: ${electionId}, adminId: ${user.uid}`);
+    console.log((await user.getIdTokenResult()).claims.admin);
     const docRef = await addDoc(collection(db, `elections/${electionId}/ballots`), ballotData);
     navigate(`/election/${electionId}/ballot/${docRef.id}/edit`);
   };
