@@ -3,10 +3,11 @@ import { NavLink } from 'react-router-dom';
 import '../styles/Sidebar.css';
 
 const Sidebar = ({ isAdmin, isSuperAdmin }) => {
-  const [activeMenu, setActiveMenu] = useState(null);
+  const [activeMenu, setActiveMenu] = useState('');
 
+  // Function to handle clicks on menu items that have sub-menus
   const handleMenuClick = (menuName) => {
-    setActiveMenu(activeMenu === menuName ? null : menuName);
+    setActiveMenu(activeMenu === menuName ? '' : menuName); // Toggle active menu
   };
 
   const isAnyAdmin = isAdmin || isSuperAdmin;
@@ -16,16 +17,13 @@ const Sidebar = ({ isAdmin, isSuperAdmin }) => {
       <ul>
         <li><NavLink to="/">Home</NavLink></li>
         {isSuperAdmin && (
-          <li onClick={() => handleMenuClick('userManagement')}>
-            User Management
-            {activeMenu === 'userManagement' && (
-              <ul>
-                <li><NavLink to="/usermanagement">Manage Users</NavLink></li>
-              </ul>
-            )}
+          // This item is directly navigable, so it uses NavLink without onClick
+          <li>
+            <NavLink to="/usermanagement">User Management</NavLink>
           </li>
         )}
         {isAnyAdmin && (
+          // This item has sub-items, so it uses a click handler to toggle visibility
           <>
             <li onClick={() => handleMenuClick('elections')}>
               Elections
